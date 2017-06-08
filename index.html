@@ -1,0 +1,1015 @@
+<!--
+ - sPlayer - Super HTML5 Music Player
+ - Custom Styles: style + albums + genres
+ - Fonts: Roboto by Google
+ - Libraries: JQuery 2.1.4
+ - Built on: sPlayer JavaScript Audio Library
+ - Copyright: 2015-2016 Manar Kamel (manarkamel.github.io)
+<- ========================================================= -->
+
+
+<!DOCTYPE HTML>
+<html manifest="sPlayer.appcache">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Venganza | Música</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="Manar Kamel - All Rights Reserved">
+    <link type="text/css" rel="stylesheet" href="styles/style-responsive.css">
+    <link type="text/css" rel="stylesheet" href="styles/albums.css">
+    <link type="text/css" rel="stylesheet" href="styles/genres.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <!--meta tags de facebook-->
+    <meta property="og:title" content="Venganza.mx" />
+    <meta property="og:description" content="Música, reseñas y más..." />
+    <meta property="og:image" content="http://venganza.mx/publi.jpg" />      
+    <meta property="og:url" content="http://venganza.mx" />
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="discover">
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PFQVH2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PFQVH2');</script>
+    <!-- End Google Tag Manager -->
+    <div id="box">
+        <div class="bgCont">
+            <div class="bg">
+                <div class="genreArt"></div>
+            </div>
+        </div>
+        <div class="bg-lyr">
+            <div class="header">
+                <div class="menu-ico">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="search">
+                    <label for="search" class="search-ico">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="27.977px" height="27.977px" viewBox="0 0 27.977 27.977" style="enable-background:new 0 0 27.977 27.977;" xml:space="preserve">
+                            <g id="Search_-_Line.svg">
+                                <g>
+                                    <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff;" d="M17.837,17.124c1.714-1.888,2.663-4.305,2.663-6.873
+                                        c0-2.738-1.067-5.312-3.003-7.248S12.986,0,10.247,0c-2.739,0-5.313,1.067-7.25,3.002c-3.997,3.996-3.997,10.5,0,14.496
+                                        c1.936,1.936,4.511,3.002,7.25,3.002c2.568,0,4.986-0.948,6.874-2.662l10.14,10.138l0.715-0.715L17.837,17.124z M16.781,16.784
+                                        c-1.746,1.745-4.066,2.706-6.534,2.706c-2.469,0-4.789-0.961-6.534-2.706c-3.603-3.603-3.603-9.464,0-13.066
+                                        c1.745-1.745,4.066-2.706,6.534-2.706c2.468,0,4.788,0.961,6.534,2.706c1.745,1.745,2.707,4.065,2.707,6.533
+                                        C19.488,12.719,18.527,15.038,16.781,16.784z" />
+                                </g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                        </svg>
+                    </label>
+                    <input type="text" name="search" id="search" placeholder="Search music" autocomplete="off" />
+                </div>
+               <div id="title" class="discover" > 
+                    <ul style="display:none">
+                        <li class="topsongs active">Top Songs</li>
+                        <li class="newreleases">New Releases</li>
+                        <li class="recommended">Recommended</li>
+                        <li class="genres">Genres</li>
+                    </ul>
+                    <p id="genreTitle"></p>
+                    <p id="pageTitle"></p>
+                </div>
+                <div class="more">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="29.007px" height="14.982px" viewBox="0 0 29.007 14.982" style="enable-background:new 0 0 29.007 14.982;" xml:space="preserve">
+                        <g id="Arrow_-_Right.svg">
+                            <g>
+                                <polygon style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" points="21.612,0 20.908,0.713 27.101,6.986 0,6.986 0,7.995 
+            27.101,7.995 20.908,14.268 21.612,14.982 29.007,7.491       "></polygon>
+                            </g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                    </svg>
+                </div>
+            </div> 
+           <div class="menu">
+                <ul class="menu-list">
+                    <li class="discover-li active">
+                        <div class="content-ico">
+                            <div class="ico-left">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33.003px" height="20.007px" viewBox="0 0 33.003 20.007" style="enable-background:new 0 0 33.003 20.007;" xml:space="preserve">
+                                    <g id="Eye.svg">
+                                        <g>
+                                            <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff;" d="M32.78,9.706C32.483,9.309,25.419,0,16.501,0
+                                                        S0.52,9.309,0.223,9.706L0,10.004l0.223,0.298c0.297,0.396,7.36,9.705,16.278,9.705s15.982-9.309,16.278-9.705l0.223-0.298
+                                                        L32.78,9.706z M16.501,19.011c-7.549,0-13.955-7.415-15.244-9.007c1.287-1.593,7.688-9.008,15.244-9.008
+                                                        c7.549,0,13.955,7.416,15.244,9.008C30.458,11.597,24.057,19.011,16.501,19.011z M16.501,2.542c-4.124,0-7.478,3.347-7.478,7.462
+                                                        c0,4.114,3.354,7.461,7.478,7.461s7.478-3.347,7.478-7.461C23.98,5.889,20.625,2.542,16.501,2.542z M16.501,16.469
+                                                        c-3.573,0-6.48-2.899-6.48-6.464c0-3.565,2.907-6.465,6.48-6.465s6.48,2.9,6.48,6.465C22.981,13.569,20.074,16.469,16.501,16.469z
+                                                        " />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <span>Discover</span>
+                    </li>
+                    <li class="radio-li" style="display:none">
+                        <div class="radio-ico">
+                            <div class="ico-left">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24.028px" height="23.963px" viewBox="0 0 24.028 23.963" style="enable-background:new 0 0 24.028 23.963;" xml:space="preserve">
+                                    <g id="Airdrop.svg">
+                                        <g>
+                                            <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M13.007,12.359c0-0.593-0.467-1.076-1.042-1.076
+            s-1.042,0.483-1.042,1.076c0,0.594,0.467,1.077,1.042,1.077S13.007,12.953,13.007,12.359z M11.965,0C5.368,0,0,5.544,0,12.36
+            c0,5.165,3.169,9.828,7.885,11.603l0.267-0.757c-4.41-1.66-7.373-6.019-7.373-10.847c0-6.371,5.018-11.555,11.186-11.555
+            c6.167,0,11.184,5.183,11.184,11.555c0,4.829-2.963,9.188-7.372,10.847l0.266,0.757c4.716-1.774,7.885-6.437,7.885-11.603
+            C23.93,5.544,18.562,0,11.965,0z M22.716,12.36c0-6.124-4.823-11.106-10.751-11.106c-5.928,0-10.751,4.982-10.751,11.106
+            c0,4.653,2.857,8.846,7.109,10.435l0.265-0.757c-3.944-1.475-6.595-5.364-6.595-9.679c0-5.68,4.473-10.301,9.972-10.301
+            c5.498,0,9.971,4.621,9.971,10.301c0,4.316-2.65,8.205-6.595,9.678l0.265,0.758C19.859,21.207,22.716,17.014,22.716,12.36z
+             M21.502,12.36c0-5.433-4.278-9.852-9.537-9.852c-5.259,0-9.538,4.42-9.538,9.852c0,4.141,2.546,7.866,6.334,9.267l0.263-0.758
+            c-3.479-1.288-5.817-4.707-5.817-8.509c0-4.988,3.929-9.047,8.758-9.047c4.829,0,8.757,4.059,8.757,9.047
+            c0,3.803-2.338,7.222-5.817,8.509l0.263,0.758C18.957,20.226,21.502,16.502,21.502,12.36z M20.289,12.36
+            c0-4.741-3.734-8.599-8.324-8.599c-4.59,0-8.324,3.857-8.324,8.599c0,3.63,2.234,6.886,5.559,8.1l0.26-0.76
+            c-3.014-1.1-5.039-4.051-5.039-7.34c0-4.297,3.384-7.793,7.545-7.793c4.16,0,7.544,3.496,7.544,7.793
+            c0,3.289-2.025,6.24-5.039,7.34l0.26,0.76C18.055,19.246,20.289,15.99,20.289,12.36z M19.075,12.36c0-4.05-3.189-7.345-7.11-7.345
+            c-3.921,0-7.111,3.295-7.111,7.345c0,3.119,1.922,5.905,4.784,6.933l0.256-0.761c-2.548-0.915-4.26-3.395-4.26-6.171
+            c0-3.606,2.84-6.539,6.331-6.539c3.491,0,6.33,2.934,6.33,6.539c0,2.777-1.712,5.257-4.26,6.171l0.256,0.761
+            C17.153,18.265,19.075,15.479,19.075,12.36z M17.861,12.36c0-3.359-2.645-6.092-5.896-6.092c-3.252,0-5.897,2.733-5.897,6.092
+            c0,2.608,1.612,4.925,4.01,5.766l0.25-0.763c-2.082-0.729-3.481-2.74-3.481-5.003c0-2.915,2.296-5.286,5.117-5.286
+            c2.821,0,5.116,2.371,5.116,5.286c0,2.263-1.398,4.273-3.48,5.003l0.25,0.763C16.25,17.285,17.861,14.968,17.861,12.36z
+             M16.648,12.36c0-2.668-2.1-4.838-4.683-4.838c-2.583,0-4.683,2.17-4.683,4.838c0,2.099,1.301,3.948,3.238,4.598l0.241-0.766
+            c-1.615-0.543-2.699-2.083-2.699-3.832c0-2.224,1.751-4.033,3.904-4.033c2.152,0,3.903,1.809,3.903,4.033
+            c0,1.749-1.085,3.289-2.699,3.832l0.241,0.766C15.347,16.308,16.648,14.459,16.648,12.36z M15.434,12.36
+            c0-1.977-1.556-3.584-3.469-3.584c-1.913,0-3.47,1.608-3.47,3.584c0,1.583,0.995,2.956,2.475,3.417l0.225-0.771
+            c-1.149-0.358-1.921-1.421-1.921-2.646c0-1.532,1.207-2.779,2.69-2.779c1.483,0,2.689,1.247,2.689,2.779
+            c0,1.225-0.772,2.288-1.921,2.646l0.225,0.771C14.44,15.316,15.434,13.943,15.434,12.36z M14.22,12.36
+            c0-1.285-1.012-2.331-2.255-2.331c-1.244,0-2.256,1.045-2.256,2.331c0,1.07,0.706,1.998,1.716,2.256l0.187-0.782
+            c-0.662-0.169-1.124-0.776-1.124-1.474c0-0.841,0.662-1.525,1.476-1.525c0.814,0,1.475,0.684,1.475,1.525
+            c0,0.699-0.462,1.305-1.124,1.474l0.187,0.782C13.515,14.358,14.22,13.43,14.22,12.36z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <span>Radio</span>
+                    </li>
+                    <li class="starred-li">
+                        <div class="star-ico">
+                            <div class="ico-left">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="29.015px" height="27.987px" viewBox="0 0 29.015 27.987" style="enable-background:new 0 0 29.015 27.987;" xml:space="preserve">
+                                    <g id="Star_-_Line.svg">
+                                        <g>
+                                            <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff;" d="M29.015,10.69l-11.082,0L14.508,0l-3.425,10.689L0,10.69
+                                                                    l8.966,6.607l-3.424,10.69l8.966-6.606l8.966,6.607l-3.424-10.69L29.015,10.69z M21.586,25.352l-7.078-5.216l-7.079,5.216
+                                                                    l2.703-8.439l-7.078-5.216l8.75,0l2.704-8.439l2.704,8.439l8.749,0l-7.078,5.216L21.586,25.352z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <span>Favoritos</span>
+                    </li>
+                    <li class="music-li" style="display:none">
+                        <div class="star-ico">
+                            <div class="ico-left">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="21.977px" height="27.987px" viewBox="0 0 21.977 27.987" style="enable-background:new 0 0 21.977 27.987;" xml:space="preserve">
+                                    <g id="Music_-_Line.svg">
+                                        <g>
+                                            <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M6.425,3.759v0.893H6.414l0.017,6.025l0.002-0.001
+            c0.021,7.857-0.003,9.026-0.014,9.154c0,0.006-0.074,0.566-0.468,0.642c-0.169,0.031-0.857,0.054-1.718,0.054H4.231
+            C1.581,20.526,0,21.739,0,23.771c0,1.698,0.262,2.711,1.743,3.558c0.736,0.325,1.643,0.658,2.787,0.658
+            c2.345,0,4.259-1.324,4.441-3.017c0.086-0.361,0.13-0.765,0.13-1.199V8.243L19.31,5.776c0.012,4.869,0.01,9.981-0.016,10.309
+            c0,0.006-0.074,0.566-0.468,0.642c-0.168,0.031-0.856,0.054-1.717,0.054h-0.002c-2.649,0-4.231,1.213-4.231,3.245
+            c0,1.698,0.262,2.711,1.742,3.558c0.737,0.326,1.644,0.659,2.787,0.659c2.346,0,4.26-1.324,4.441-3.017
+            c0.087-0.36,0.13-0.764,0.13-1.2V0L6.425,3.759z M20.965,20.026c0,0.358-0.034,0.683-0.113,1.029
+            c-0.134,1.224-1.647,2.182-3.446,2.182c-0.769,0-1.457-0.166-2.329-0.548c-0.945-0.542-1.189-1.09-1.189-2.662
+            c0-1.851,1.75-2.239,3.264-2.239c0.554,0,1.532-0.009,1.864-0.072c0.898-0.172,1.229-1.035,1.284-1.52
+            c0.048-0.447,0.021-10.628,0.02-11.06l-0.002-0.639L8.089,7.453v16.318c0,0.356-0.035,0.681-0.114,1.028
+            c-0.134,1.224-1.647,2.182-3.446,2.182c-0.77,0-1.458-0.166-2.329-0.547c-0.945-0.543-1.189-1.09-1.189-2.662
+            c0-1.948,2.016-2.239,3.264-2.239c0.554,0,1.532-0.009,1.864-0.072c0.898-0.172,1.23-1.035,1.284-1.521
+            c0.011-0.105,0.046-0.427,0.018-9.981L7.437,4.549l13.528-3.27V20.026z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <span>Music</span>
+                    </li>
+                </ul>
+                
+                <div class="results-list">
+                    <p id="noresults">No results found</p>
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <div class="menu-bar">
+                    <img src="images/logo.PNG" width="69" height="33" alt="sPlayer">
+                </div>
+            </div> 
+            <div class="content discover selected">
+                <div class="tab topsongs active">
+
+
+                    <div class="album casster">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Desde hoy</h1>
+                            <p>Casster</p>
+                        </div>
+                    </div>
+
+                    <div class="album ojodetigre">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Festival Ojo de Tigre</h1>
+                            <p>Playlist</p>
+                        </div>
+                    </div>
+
+                    <div class="album localcampions">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Local Champion</h1>
+                            <p>No Fame, No Pancakes</p>
+                        </div>
+                    </div>
+
+                    <div class="album mantarrayas">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Corona</h1>
+                            <p>Mantarrayas</p>
+                        </div>
+                    </div>
+
+                    <div class="album mantarrayassplit">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Split</h1>
+                            <p>Mantarrayas</p>
+                        </div>
+                    </div>
+
+                    <div class="album pirata">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Sr. Pirata</h1>
+                            <p>EP</p>
+                        </div>
+                    </div>
+
+                    <div class="album mlby">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Inquebrantable</h1>
+                            <p>My Life Before You</p>
+                         </div>
+                    </div>
+
+                    <div class="album massey">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Fueron Sueños</h1>
+                            <p>Los Massey</p>
+                        </div>
+                    </div>
+
+                    <div class="album capitan">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Anclas en el pecho</h1>
+                            <p>Capitán</p>
+                        </div>
+                    </div>
+
+                    <div class="album saegsingle">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Hippietronica</h1>
+                            <p>SAEG</p>
+                        </div>
+                    </div>
+
+                    <div class="album saeg">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>Invasión</h1>
+                            <p>SAEG</p>
+                        </div>
+                    </div>
+
+
+                    <!--Casster-->
+                    <div class="album-content casster">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/BmNJbGt.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Casster - Desde hoy</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID021" data-song="https://drive.google.com/open?id=0B4R2_PvMMim0V2s0ZUNmVFc1RXM" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Casster &amp; Desde hoy</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID022" data-song="https://dl.dropboxusercontent.com/u/103503825/Casster/Pasajero.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Casster &amp; Pasajero</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID023" data-song="https://dl.dropboxusercontent.com/u/103503825/Casster/Cuando%20te%20vas.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Casster &amp;Cuando Te Vas</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="album-content ojodetigre">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/2BkG6gc.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Festival Ojo De Tigre</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID0101" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/Como%20en%20el%20'Crechendo'%20-%20NO%20SOMOS%20MARINEROS.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>No Somos Marineros &amp; Como en el 'Crechendo</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID0111" data-song="https://dl.dropboxusercontent.com/u/103503825/Local%20Chmapions/Local%20Champion%20-%20No%20Fame%2C%20No%20Pancakes.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Local Champion &amp; No Fame, No Pancakes</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                
+                                <li id="sID0103" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/Enemigo%20(I-III)%20-%20The%20Titan%20Arum.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Titan Arum &amp; Enemigo(I-III)</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>   
+                                   
+                                <li id="sID0102" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/02%20Secretos.mp3" class="nowplaying wasplaying"><span><i>4</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; Secretos</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID0107" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/Hot%20Trip%20(Teaser)%20-%20Los%20Cumbia%20Killers.mp3" class="nowplaying wasplaying"><span><i>5</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Cumbia Killers &amp; Hot Trip</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li> 
+
+                                <li id="sID0104" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/%C2%BFD%C3%B3nde%20est%C3%A1%20la%20igualdad-%20-%20A%20Lost%20Humanity.mp3" class="nowplaying wasplaying"><span><i>6</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>A Lost Humanity &amp; ¿Dónde está la igualdad?</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID0106" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/DIGNATARIOS%20-%20MUSICA%20DE%20GUERRA.mp3" class="nowplaying wasplaying"><span><i>7</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Dignatarios &amp; Música de Guerra</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>   
+                                   
+                                <li id="sID0105" data-song="https://dl.dropboxusercontent.com/u/103503825/Ojo%20de%20tigre/01%20Digan%20Lo%20Que%20Digan%20(Main%20Radio%20Mix)%20-%20Caballeros%20del%20Plan%20G.mp3" class="nowplaying wasplaying"><span><i>8</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Caballero del Plan G &amp; Digan Lo Que Digan</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--LocalChampions-->
+                    <div class="album-content localcampions">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/LTvHEOm.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Local Champion - No Fame, No Pancakes</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID02231" data-song="https://dl.dropboxusercontent.com/u/103503825/Local%20Chmapions/Local%20Champion%20-%20No%20Fame%2C%20No%20Pancakes.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Local Champion &amp; No Fame, No Pancakes</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Mantarryas-->
+                    <div class="album-content mantarrayas">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/AmEPUbO.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Mantarrayas - Corona</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID031" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Corona/01%20Fantasmas.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; Fantasmas</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID032" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Corona/02%20No%20pasa%20nada.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; No Pasa Nada</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID033" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Corona/03%20Por%20mas%20que%20intento.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp;Por Más Que Intento</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID034" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Corona/04%20Victoria.mp3" class="nowplaying wasplaying"><span><i>4</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; Victoria</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID035" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Corona/05%20C%C3%ADrculos.mp3" class="nowplaying wasplaying"><span><i>5</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; Circulos</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID036" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Corona/06%20Fuera%20de%20lugar.mp3" class="nowplaying wasplaying"><span><i>6</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp;Fuera de Lugar</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>   
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!--mantarrayassplit-->
+                    <div class="album-content mantarrayassplit">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/s0dp4bi.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Mantarrayas - Split</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID0331" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Split/Dirty%20Wolfs_Mantarrayas/01%20Brujas.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; Brujas</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID0332" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Split/Dirty%20Wolfs_Mantarrayas/02%20Secretos.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp; Secretos</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID0333" data-song="https://dl.dropboxusercontent.com/u/103503825/Mantarrayas/Split/Dirty%20Wolfs_Mantarrayas/03%20Felicidades.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Mantarrayas &amp;Felicidades</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--mlby-->
+                    <div class="album-content mlby">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/H2pMFHs.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>My Life Before You - Inquebrantable</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID041" data-song="https://dl.dropboxusercontent.com/u/103503825/MLBY/Cardiopat%C3%ADa.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>My Life Before You &amp; Cardiopatía</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID042" data-song="https://dl.dropboxusercontent.com/u/103503825/MLBY/Mi%20vida%20antes%20de%20ti%20Feat.%20Alonzo%20Rodr%C3%ADguez.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>My Life Before You &amp; Mi Vida Antes de Ti</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID043" data-song="https://dl.dropboxusercontent.com/u/103503825/MLBY/535.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>My Life Before You &amp; 5:35</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID044" data-song="https://dl.dropboxusercontent.com/u/103503825/MLBY/Inquebrantable.mp3" class="nowplaying wasplaying"><span><i>4</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>My Life Before You &amp; Inquebrantable</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID045" data-song="https://dl.dropboxusercontent.com/u/103503825/MLBY/El%20%C3%9Altimo%20Aliento.mp3" class="nowplaying wasplaying"><span><i>5</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>My Life Before You &amp; Último Aliento</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>   
+
+                                <li id="sID046" data-song="https://dl.dropboxusercontent.com/u/103503825/MLBY/Nada%20que%20perder%20Feat.%20Lizeth%20Sepulveda.mp3" class="nowplaying wasplaying"><span><i>6</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>My Life Before You &amp; Nada QUe Perder</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>   
+                                   
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--pirata-->
+                    <div class="album-content pirata">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/fwNidzu.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Sr. Pirata </h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID051" data-song="https://dl.dropboxusercontent.com/u/103503825/sr%20pirata/Sr.%20Pirata%20-%20El%20Capit%C3%A1n.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Sr. Pirata &amp; El Capitán</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID052" data-song="https://dl.dropboxusercontent.com/u/103503825/sr%20pirata/Sr.%20Pirata%20-%20Los%20Amigos.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Sr. Pirata &amp; Los Amigos</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID053" data-song="https://dl.dropboxusercontent.com/u/103503825/sr%20pirata/Sr.%20Pirata%20-%20Razones.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Sr. Pirata &amp; Razones</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                 <li id="sID054" data-song="https://dl.dropboxusercontent.com/u/103503825/sr%20pirata/Sr.%20Pirata%20-%20S%C3%A1bado.mp3" class="nowplaying wasplaying"><span><i>4</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Sr. Pirata &amp; Sábado</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--massey-->
+                    <div class="album-content massey">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/Lzzp4XY.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Los Massey - Fueron Sueños </h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID061" data-song="https://dl.dropboxusercontent.com/u/103503825/Los%20massey/Caminos.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Massey &amp; Caminos</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                 
+                                <li id="sID062" data-song="https://dl.dropboxusercontent.com/u/103503825/Los%20massey/Cuando%20ya%20no%20hay%20mas.mp3" class="nowplaying wasplaying"><span><i>2</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Massey &amp; Cuando ya no hay mas</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID063" data-song="https://dl.dropboxusercontent.com/u/103503825/Los%20massey/Eres%20tu.mp3" class="nowplaying wasplaying"><span><i>3</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Massey &amp; Eres tu</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                 <li id="sID064" data-song="https://dl.dropboxusercontent.com/u/103503825/Los%20massey/Palabras%20sin%20decir.mp3" class="nowplaying wasplaying"><span><i>4</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Massey &amp; Palabras sin decir</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID065" data-song="https://dl.dropboxusercontent.com/u/103503825/Los%20massey/Recuerdos.mp3" class="nowplaying wasplaying"><span><i>5</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Massey &amp; Recuerdos</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID066" data-song="https://dl.dropboxusercontent.com/u/103503825/Los%20massey/Tus%20soles%20negros.mp3" class="nowplaying wasplaying"><span><i>6</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Los Massey &amp; Tus Soles negros</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li> 
+                                   
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--capitan-->
+                    <div class="album-content capitan">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/guwDs2b.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>Capitán - Anclas en el Pecho</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID071" data-song="https://dl.dropboxusercontent.com/u/103503825/Capitan/Capit%C3%A1n%20-%20Anclas%20en%20el%20Pecho.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>Capitán &amp; Anclas en el Pecho</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!--saeg sencillo-->
+                    <div class="album-content saegsingle">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/3yI0VLs.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>SAEG - Hippietronica</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID081" data-song="https://dl.dropboxusercontent.com/u/103503825/SAEG/01_Hippietronica%20(Single).mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>SAEG &amp; Hippietronica</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--saeg EP-->
+                    <div class="album-content saeg">
+                        <div class="album-large">
+                            <div class="art" style="width: 461px; height: 461px; background-image: url(&quot;http://i.imgur.com/V8pCPe7.jpg&quot;); background-size: cover; background-position: center center;"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>SAEG - Invasión</h1>
+                            <ul class="songs-list">
+                                
+                                <li id="sID0881" data-song="https://dl.dropboxusercontent.com/u/103503825/SAEG/01_Invasi%C3%B3n.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>SAEG &amp; Invasión</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                 <li id="sID0882" data-song="https://dl.dropboxusercontent.com/u/103503825/SAEG/02_No%20me%20ver%C3%A1n%20caer.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>SAEG &amp; No me verán caer</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                <li id="sID0883" data-song="https://dl.dropboxusercontent.com/u/103503825/SAEG/03_Hombre%20de%20mundo.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>SAEG &amp; Hombre de mundo</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+
+                                 <li id="sID0884" data-song="https://dl.dropboxusercontent.com/u/103503825/SAEG/04_Beso%20a%20beso.mp3" class="nowplaying wasplaying"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>SAEG &amp; Beso a beso</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                   <!-- <span class="float-r downloadit"><a href="https://dl.dropboxusercontent.com/u/103503825/Casster/Desde%20hoy.mp3" download=""><img src="images/svg/cloud_line.svg" class="notdownloaded"> <img src="images/svg/cloud_filled.svg" class="downloaded"></a></span>--></li>
+ 
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Note: Remove div.no-content -->
+                    <!-- Note: Dont Place albums inside div.no-content -->
+                    <div class="genre-content chill">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content romance">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content hiphop">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content decades">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content sleep">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content classic">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content kids">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content club">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content country">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content folk">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content groove">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content jazz-blues">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content latino">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content metal">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content travel">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content pop">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content party">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content rap">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content rock">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                    <div class="genre-content workout">
+                        <div class="no-content">Place your albums here</div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="content radio">
+                <div class="radio-wrapper clearfix">
+                    <div class="songs">
+                        <ul>
+                            <li data-song="http://listen.radionomy.com/abc-jazz"><span><img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>ABC Jazz
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="channel-time">0:00</div>
+                </div>
+            </div>
+            <div class="content starred">
+                <div class="no-content" id="nocontent">Your favorite songs will show up here</div>
+                <div class="songs starred-list">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="content music">
+
+                <div id="selectFiles">
+                    <div class="clearfix">
+
+                        <div>Add a Folder
+                            <input type="file" class="getSongs" directory="" webkitdirectory="" mozdirectory="">
+                        </div>
+                        <div class="alt-btn">Add Songs
+                            <input type="file" class="getSongs" multiple="">
+                        </div>
+                        <div class="clear-btn">
+                            Clear
+                        </div>
+
+                        <p>Import your music</p>
+                    </div>
+                </div>
+                <div id="iFiles">
+
+                </div>
+            </div>
+
+            
+
+            <div class="bottom">
+                <div class="controls" id="playerJS">
+                    <div id="currentNP">
+                        <div id="bottomArt"></div>
+                    </div>
+                    <!-- not backwards-btn or reverse it's actually previous-btn, it will be fixed soon -->
+                    <div class="prev-btn c-btn np-btn">
+                        <img src="images/svg/reverse_filled.svg">
+                    </div>
+                    <div class="play-btn c-btn" id="playBtn">
+                        <img src="images/svg/play_filled.svg" class="notplaying">
+                        <img src="images/svg/pause_filled.svg" class="playing">
+                    </div>
+                    <div class="next-btn c-btn np-btn">
+                        <img src="images/svg/forward_filled.svg">
+                    </div>
+                    <div class="current-time s-time">0:00</div>
+                    <div class="slider">
+                        <input id="slider" type="range" value="0" max="">
+                        <div class="sliderBg"></div>
+                    </div>
+                    <div class="song-length s-time">0:00</div>
+
+                    <div class="loop-btn o-btn">
+                        <img src="images/svg/loop_off.svg" class="notlooped">
+                        <img src="images/svg/loop_on.svg" class="looped">
+                    </div>
+                    <div class="cloud-btn o-btn" style="display:none">
+                        <a href="#downloadlink" download>
+                            <img src="images/svg/cloud_line.svg" class="notdownloaded">
+                            <img src="images/svg/cloud_filled.svg" class="downloaded">
+                        </a>
+                    </div>
+                    <div class="star-btn o-btn">
+                        <img src="images/svg/star_line.svg" class="notstarred">
+                        <img src="images/svg/star_filled.svg" class="starred">
+                    </div>
+                    <div class="share-btn">
+                        <img src="images/svg/export_line.svg">
+                    </div>
+                    
+                    <!-- this more-btn for mobile ui only -->
+                    <div class="more-btn">
+                        <img src="images/svg/more_line.svg">
+                        <div class="close-btn">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="share-box">
+                    <div class="close-btn">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p>Share this song</p>
+                    <div class="share-link"></div>
+                    <div class="share-note">Note: Share links doesn't work for the imported music</div>
+                </div>
+            </div>
+
+    
+     <!--electron assets
+    (To Active electron app, you must remove this conditional comment, 
+    now since jquery is loaded by require,
+    you don't need that old script tag to load jquery again)
+    ================================================================== -->
+<!--
+    <script>
+        window.$ = window.jQuery = require('./src/lib/jquery-2.1.4.min.js');
+    </script> 
+-->
+
+    <script src="src/lib/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="src/lib/localforage.nopromises.min.js"></script>
+    
+    <script type="text/javascript" src="../../dist/sconfig.min.js"></script>
+    <script type="text/javascript" src="../../dist/splayer.min.js"></script>
+    
+    <script type="text/javascript" src="src/main.js"></script>
+    <script type="text/javascript" src="src/other.js"></script>
+    <script type="text/javascript" src="src/importmusic.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-82741950-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</body>
+
+</html>
